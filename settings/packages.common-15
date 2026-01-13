@@ -1,0 +1,76 @@
+pkg
+sudo
+nano
+tmux
+xorg-server
+xf86-input-evdev
+xf86-input-keyboard
+xf86-input-libinput
+xf86-input-mouse
+xf86-input-vmmouse
+xf86-video-ati
+# This package was officially deleted on January 2, 2025 : https://www.freshports.org/x11-drivers/xf86-video-cirrus
+# xf86-video-cirrus
+xf86-video-intel
+xf86-video-scfb
+xf86-video-vesa
+xf86-video-vmware
+xf86-video-qxl # !i386
+# We need drm-66-kmod to support the latest Intel GPUs, or use BSD version agnostic "drm-kmod". Hardcoding for now.
+gpu-firmware-kmod
+drm-66-kmod
+# drm-legacy-kmod # Does not exist in 13. FIXME: What happens to the devices that need it?
+libva-intel-driver
+# nvidia-driver # !i386 # Is now handled in build.sh initgfx() -> would like to understand why.
+mesa-libs
+mesa-dri
+gpu-firmware-kmod
+open-vm-tools
+# Needed for VirtualBox guest integration
+virtualbox-ose-kmod
+virtualbox-ose-additions
+xauth
+xinit
+setxkbmap
+xdg-user-dirs
+xdg-utils
+git-lite
+zsh
+usbids
+wpa_supplicant_gui
+webcamd
+# webcamoid # Draws in jackit, which draws in db5, which is huge
+utouch-kmod
+pv
+cpdup
+# iichid # iichid is not available in 13 because it is in base there; adding it here breaks the 13 build
+avahi-app
+nss_mdns
+openntpd
+# x11-toolkits/py-qt5-widgets was renamed to:
+devel/py-qt5-pyqt
+freedesktop-sound-theme
+# Library to access the Xorg/XFree86 Synaptics TouchPad Driver
+libsynaptics
+# Hardware detecting, device driver loading daemon
+dsbdriverd
+# Needed by pkg-static to verify certificates?
+ca_root_nss
+# Needed for SynPS/2 Synaptics TouchPad?
+libinput
+# Needed to interact with Apple System Management Controller, e.g., for keyboard backlight
+asmctl
+# Needed for Broadcom WLAN work (e.g., for MacBooks) 
+b43-fwcutter
+# bwn-firmware-kmod # Exists only in ports, not in packages; need a workaround
+# daemon that loads suitable drivers for PCI and USB hardware based on a txt db of USB and PCI IDs
+dsbdriverd
+# AMD Radeon Xorg Driver, requires amdgpu KMS driver from graphics/drm-kmod
+x11-drivers/xf86-video-amdgpu
+# hplip is apparently needed for non-network HP printers; https://github.com/helloSystem/ISO/issues/225
+# but it is not yet available in FreeBSD 14, hence moved it from packages.hello to packages.common-13 for now
+hplip
+# Bluetooth
+comms/bluez-firmware
+comms/iwmbt-firmware
+zenity

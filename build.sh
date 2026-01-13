@@ -15,11 +15,11 @@ echo "Host system version: ${version}"
 MAJOR=$(echo "${version}" | cut -d "." -f 1) # "12" or "13"
 
 if [ "${MAJOR}" = "13" ] ; then
-  # version="13.0-RC3"
-  # version="13.0-RELEASE"
-  version="13.2-RELEASE"
+  version="13.5-RELEASE"
 elif [ "${MAJOR}" = "14" ] ; then
-  version="14.0-RELEASE"
+  version="14.3-RELEASE"
+elif [ "${MAJOR}" = "15" ] ; then
+  version="15.0-RELEASE"
 fi
 
 VER=$(echo "${version}" | cut -d "-" -f 1) # "12.2" or "13.0"
@@ -313,7 +313,7 @@ initgfx()
 {
   /usr/local/sbin/pkg-static -c ${uzip} update # Needed if we are shipping additional repos 
   if [ "${arch}" != "i386" ] ; then
-    if [ $MAJOR -lt 15 ] ; then
+    if [ $MAJOR -lt 16 ] ; then
       PKGS="quarterly"
       # PKGS="latest" # This must match what we specify in packages()
     else
